@@ -52,6 +52,10 @@ memory(){
     free --mega | awk 'NR == 2 { print $3"/"$2"" }'
 }
 
+init (){
+    cut -d ' ' -f 1 /proc/1/comm
+}
+
 kernel(){
     uname -r
 }
@@ -63,6 +67,7 @@ printf '%b' "             ${c1}os${c3}    $(distro)
     ${c8}/${c0}${c10} ${c0}${c8}'\'${c0}    ${c6}up${c3}    $(uptime)
     ${c9}(${c0}${c8}\_;/${c0}${c9})${c0}   ${c1}disk${c3} $(disk)
              ${c2}ram${c3}   $(memory)  
+             ${c4}init${c3}  $(init)  
 
       ${c6}󰮯  ${c6}${c2}󰊠  ${c2}${c4}󰊠  ${c4}${c5}󰊠  ${c5}${c7}󰊠  ${c7}
 
